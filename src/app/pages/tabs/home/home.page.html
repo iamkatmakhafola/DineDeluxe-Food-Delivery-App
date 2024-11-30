@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-title>
+      <span>Home</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="borderBottom">
+    <swiper-container [modules]="swiperModules"
+    [slidesPerView]="1.2"
+    [CenteredSlides]="true"
+    [autoplay]="true"
+    [pagination]="{clickable:true, dynamicBullets: true}"
+    [spaceBetween]="20">
+      
+      <swiper-slide>
+        <img src="assets/imgs/1.jpeg" style="width: 100%; height: 100%;">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/imgs/2.jpeg" style="width: 100%; height: 100%;">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/imgs/3.jpeg" style="width: 100%; height: 100%;">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/imgs/4.jpeg" style="width: 100%; height: 100%;">
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <ion-list>
+    <ion-list-header class="ion-margin-bottom">
+      <ion-label>
+        <h4>Restaurants Nearby</h4>
+        <p>Explore distinctive flavors in your vicinity</p>
+      </ion-label>
+    </ion-list-header>
+    <ion-item-group>
+      <ion-item lines="none" *ngFor="let restaurant of restaurants" 
+      [routerLink]="['/', 'tabs', 'restaurants', restaurant.uid]">
+        <ion-thumbnail slot="start">
+          <img [src]="restaurant?.cover ? restaurant.cover : 'assets/imgs/1.jpeg'" />
+        </ion-thumbnail>
+        <ion-label>
+          <h4>{{restaurant?.name}}</h4>
+          <ion-text color="medium">
+            <p class="pStyle">
+              {{getCuisine(restaurant?.cuisines)}}
+            </p>
+          </ion-text>
+          <span>
+            <ion-icon name="star"></ion-icon>
+            {{restaurant?.rating}} .
+          </span>
+          {{restaurant?.delivery_time}} mins . R{{restaurant?.price}}
+          <ion-text color="tertiary" *ngIf="restaurant?.distance && restaurant?.distance != 0">
+            <p class="distance">
+              {{restaurant?.distance | number: '0.0-2'}} kms away
+            </p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar
+      #searchInput      
+      placeholder="Search Resturant Name" 
+      (ionInput)="onSearchChange($event)" 
+      [(ngModel)]="query"
+      ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header *ngIf="!isLoading && query && restaurants.length > 0">
+      <ion-label>
+        <h4>Search results for "{{query}}"</h4>
+      </ion-label>
+    </ion-list-header>
+    <ion-item lines="none" *ngFor="let restaurant of restaurants" 
+    [routerLink]="['/', 'tabs', 'restaurants', restaurant.uid]">
+      <ion-thumbnail slot="start">
+        <img [src]="restaurant?.cover ? restaurant.cover : 'assets/imgs/1.jpeg'" />
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{restaurant?.name}}</h4>
+        <ion-text color="medium">
+          <p class="pStyle">
+            {{getCuisine(restaurant?.cuisines)}}
+          </p>
+        </ion-text>
+        <span>
+          <ion-icon name="star"></ion-icon>
+          {{restaurant?.rating}} .
+        </span>
+        {{restaurant?.delivery_time}} mins . R{{restaurant?.price}}
+        <ion-text color="tertiary" *ngIf="restaurant?.distance && restaurant?.distance != 0">
+          <p class="distance">
+            {{restaurant?.distance | number: '0.0-2'}} kms away
+          </p>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,10 @@
+<ion-item>
+  <ion-text color="primary">
+  </ion-text>
+  <ion-label class="ion-text-wrap">
+    <h5>{{item?.name}}</h5>
+  </ion-label>
+  <ion-text slot="end" color="dark" class="price ion-text-right">
+    R{{(item?.price * item.quantity) | number: '0.2-2'}}
+  </ion-text>
+</ion-item>

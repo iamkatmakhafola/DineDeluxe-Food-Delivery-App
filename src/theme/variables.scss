@@ -1,0 +1,29 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+
+:root {
+  --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+}
+
+  /*
+   * iOS Dark Theme
+   * -------------------------------------------
+   */
+
+  .ios body {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+  }
+
+  /*
+   * Material Design Dark Theme
+   * -------------------------------------------
+   */
+
+  .md body {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+  }

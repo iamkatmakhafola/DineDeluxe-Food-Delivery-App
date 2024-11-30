@@ -1,0 +1,12 @@
+ion-header {
+    ion-toolbar {
+      ion-searchbar {
+        --placeholder-color: var(--ion-color-medium);
+        --placeholder-opacity: 1;
+        --searchbar-background: var(--ion-color-light);
+        --searchbar-input-background: var(--ion-color-light);
+        --searchbar-input-border-color: var(--ion-color-light);
+        --searchbar-input-color: var(--ion-color-dark);
+      }
+    }
+  }
